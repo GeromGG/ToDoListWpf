@@ -5,11 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDoListWpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="444" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="409*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <TabControl Grid.Column="1" Margin="0,4,0,0" Grid.Row="1">
+            <TabItem Header="Подзадачи">
+                <Grid Background="White"/>
+            </TabItem>
+            <TabItem Header="Выполнено">
+                <Grid Background="White"/>
+            </TabItem>
+        </TabControl>
+        <GroupBox Header="Список задач" Margin="0,4,0,40" Grid.Row="1">
+            <ListBox/>
+        </GroupBox>
+        <Button Content="Удалить" HorizontalAlignment="Left" Margin="128,0,0,10" Width="60" Height="20" VerticalAlignment="Bottom" Grid.Row="1"/>
+        <Button Content="Создать" HorizontalAlignment="Left" Margin="60,0,0,10" Width="60" Height="20" VerticalAlignment="Bottom" Grid.Row="1"/>
+        <Menu Grid.ColumnSpan="2">
+            <MenuItem Header="File">
+                <MenuItem Header="New Project" ></MenuItem>
+                <MenuItem Header="Open Project" >
+                    <MenuItem Header="WinForms"></MenuItem>
+                    <MenuItem Header="WPF" ></MenuItem>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Exit" ></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Edit" ></MenuItem>
+            <MenuItem Header="View" ></MenuItem>
+        </Menu>
 
     </Grid>
 </Window>
