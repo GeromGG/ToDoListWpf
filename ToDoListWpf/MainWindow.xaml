@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDoListWpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="444" Width="800">
+        Title="ToDoListWpf" Height="444" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
@@ -15,8 +15,19 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="Список проектов" Margin="0,1,0,40" Grid.Row="1">
-            <ListBox/>
+        <GroupBox Header="Список проектов" Margin="0,0,0,40" Grid.Row="1">
+            <ListBox Name="list">
+                <ListBoxItem Margin="2">SudokuNET</ListBoxItem>
+                <ListBoxItem Margin="2">BomJSimul</ListBoxItem>
+                <ListBoxItem Margin="2">ToDoListWpf</ListBoxItem>
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Переименовать"></MenuItem>
+                        <MenuItem Header="Удалить"></MenuItem>
+                        <MenuItem Header="Новый проект"></MenuItem>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+            </ListBox>
         </GroupBox>
         <Button Content="Удалить" HorizontalAlignment="Left" Margin="130,0,0,10" Width="60" Height="20" VerticalAlignment="Bottom" Grid.Row="1"/>
         <Button Content="Создать" HorizontalAlignment="Left" Margin="60,0,0,10" Width="60" Height="20" VerticalAlignment="Bottom" Grid.Row="1"/>
@@ -26,7 +37,7 @@
                 <MenuItem Header="Сохранить"></MenuItem>
                 <MenuItem Header="Сохранить как..." ></MenuItem>
                 <Separator />
-                <MenuItem Header="Exit" ></MenuItem>
+                <MenuItem Header="Выход" ></MenuItem>
             </MenuItem>
             <MenuItem Header="Правка" >
                 <MenuItem Header="Новый проект" ></MenuItem>
@@ -34,10 +45,10 @@
                 <MenuItem Header="Что-то ещё" ></MenuItem>
             </MenuItem>
             <MenuItem Header="Справка" >
-                <MenuItem Header="Опрограмме" ></MenuItem>
+                <MenuItem Header="О программе" ></MenuItem>
             </MenuItem>
         </Menu>
-        <GroupBox Grid.Column="1" Header="Список задач" Grid.Row="1" Margin="0,1,0,0">
+        <GroupBox Grid.Column="1" Header="Список задач" Grid.Row="1">
             <TabControl>
                 <TabItem Header="Ожидающие">
                     <Grid Background="White"/>
@@ -45,8 +56,10 @@
                 <TabItem Header="Выполненые">
                     <Grid Background="White"/>
                 </TabItem>
+                <TabItem Header="Параметры">
+                    <Grid Background="White"/>
+                </TabItem>
             </TabControl>
         </GroupBox>
-
     </Grid>
 </Window>
