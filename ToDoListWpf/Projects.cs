@@ -1,21 +1,33 @@
-﻿namespace ToDoListWpf
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+﻿
 
+namespace ToDoListWpf
+{
+    using System.Collections.Generic;
     public class Projects
     {
         /// <summary>
-        /// Имя проекта
+        /// Список проектов
         /// </summary>
-        public string Name { get; set; }
+        public List<Project> ListProjects = new();
 
         /// <summary>
-        /// Список задач
+        /// Добавление нового проекта в список
         /// </summary>
-        public List<ProjectTask> Tasks = new();
+        /// <param name="name">Имя проекта</param>
+        public void AddProject(string name)
+        {
+            var project = new Project(name);
+            ListProjects.Add(project);
+        }
+
+        /// <summary>
+        /// Удаления проекта из списка
+        /// </summary>
+        /// <param name="project">проект который нужно удалить</param>
+        /// <returns></returns>
+        public bool DeleteProject(Project project)
+        {
+            return ListProjects.Remove(project);
+        }
     }
 }

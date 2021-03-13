@@ -1,19 +1,14 @@
 ﻿namespace ToDoListWpf
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    
+
     public class ProjectTask
     {
-        ProjectTask()
+        public ProjectTask()
         {
 
         }
 
-        ProjectTask(int indexNumber, string description, bool performed = false)
+        public ProjectTask(int indexNumber, string description, bool performed = false)
         {
             IndexNumber = indexNumber;
             Description = description;
@@ -34,5 +29,7 @@
         /// флаг выполнения
         /// </summary>
         public bool Performed { get; set; }
+
+
     }
 }
