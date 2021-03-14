@@ -18,7 +18,7 @@
         /// <summary>
         /// порядковый номер, важность
         /// </summary>
-        public int IndexNumber { get; set; }
+        public int IndexNumber { get; set; } = 1;
 
         /// <summary>
         /// описание задачи
@@ -29,7 +29,5 @@
         /// флаг выполнения
         /// </summary>
         public bool Performed { get; set; }
-
-
     }
 }
