@@ -14,10 +14,12 @@ namespace ToDoListWpf
         /// Добавление нового проекта в список
         /// </summary>
         /// <param name="name">Имя проекта</param>
-        public void AddProject(string name)
+        public int AddProject(string name)
         {
             var project = new Project(name);
             ListProjects.Add(project);
+            var lastIndex = ListProjects.IndexOf(project);
+            return lastIndex;
         }
 
         /// <summary>
