@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,18 +28,18 @@ namespace ToDoListWpf
         }
 
 
-        //private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        //{
-        //    var selected = listProjects.SelectedItem;
-        //    var project = (Project)selected;
-        //    if (project != null)
-        //    {
-        //        foreach (var task in project.Tasks)
-        //        {
-        //            tasksView.Items.Add(task);
-        //        }
-        //    }
-        //}
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            var selected = listProjects.SelectedItem;
+            var project = (Project)selected;
+            if (project != null)
+            {
+                foreach (var task in project.Tasks)
+                {
+                    tasksView.Items.Add(task);
+                }
+            }
+        }
 
         Projects projects = new();
 
@@ -48,8 +49,8 @@ namespace ToDoListWpf
             if (windowAddNewProject.ShowDialog() == true)
             {
                 var nameInTextBox = windowAddNewProject.NameInTextBox;
-                var i = projects.AddProject(nameInTextBox);
-                listProjects.Items.Add(projects.ListProjects[i]);
+                projects.AddProject(nameInTextBox);
+                listProjects.ItemsSource = new ObservableCollection<Project>(projects.ListProjects);
             }
         }
 
@@ -59,11 +60,33 @@ namespace ToDoListWpf
 
             if (selected is null)
             {
+                //добавить сообщение
                 return;
             }
 
             listProjects.Items.Remove(selected);
             projects.DeleteProject((Project)selected);
+        }
+
+        private void AddTask_Click(object sender, RoutedEventArgs e)
+        {
+            var selected = listProjects.SelectedItem;
+
+            if (selected is null)
+            {
+                //добавить сообщение
+                return;
+            }
+
+            var project = (Project)selected;
+            project.AddTask(tasksView.Items.Count, TaskTextBox.Text);
+            tasksView.ItemsSource = new ObservableCollection<ProjectTask>(project.Tasks);
+
+        }
+
+        private void DelTask_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ToDoListWpf"
+        xmlns:local="clr-namespace:ToDoListWpf" xmlns:col="clr-namespace:System.Collections;assembly=System.Runtime"
         mc:Ignorable="d"
         Title="ToDoListWpf" Height="500" Width="900" ResizeMode="NoResize">
     <Grid>
@@ -13,9 +13,10 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="174*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
+
         <GroupBox Header="Список проектов" Margin="0,0,0,40" Grid.Row="1">
             <ListBox x:Name="listProjects" DisplayMemberPath="Name">
                 <ListBox.ContextMenu>
@@ -27,11 +28,11 @@
                 </ListBox.ContextMenu>
             </ListBox>
         </GroupBox>
-        
+
         <Button x:Name="delProjects" Content="Удалить" HorizontalAlignment="Left" Margin="130,0,0,10" Width="60" Height="20" VerticalAlignment="Bottom" Grid.Row="1" Click="DelProjects_Click"/>
         <Button x:Name="addProjects" Content="Создать" HorizontalAlignment="Left" Margin="60,0,0,10" Width="60" Height="20" VerticalAlignment="Bottom" Grid.Row="1" Click="AddProjects_Click"/>
-        
-        <Menu Grid.ColumnSpan="2" Background="White">
+
+        <Menu Grid.ColumnSpan="3" Background="White" Margin="0,0,0,461" Grid.RowSpan="2">
             <MenuItem Header="Файл">
                 <MenuItem Header="Открыть список проектов"></MenuItem>
                 <MenuItem Header="Сохранить"></MenuItem>
@@ -48,12 +49,12 @@
                 <MenuItem Header="О программе" ></MenuItem>
             </MenuItem>
         </Menu>
-        
-        <GroupBox Grid.Column="1" Header="Список задач" Grid.Row="1">
+
+        <GroupBox Grid.Column="1" Header="Список задач" Grid.Row="1" Grid.ColumnSpan="2">
             <TabControl>
                 <TabItem Header="Ожидающие">
                     <Grid Background="White">
-                        <ListView IsEnabled="True" x:Name="tasksView">
+                        <ListView IsEnabled="True" x:Name="tasksView" Margin="0,40,0,0" ItemsSource="{DynamicResource ResourceKey=projectTask}">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn DisplayMemberBinding="{Binding Path=IndexNumber}">№</GridViewColumn>
@@ -61,8 +62,13 @@
                                     <GridViewColumn DisplayMemberBinding="{Binding Path=Performed}">Выполнено?</GridViewColumn>
                                 </GridView>
                             </ListView.View>
+                            <!--<ListView.Resources>
+                                <col:ArrayList x:Key="projectTask"></col:ArrayList>
+                            </ListView.Resources>-->
                             <!--<local:ProjectTask IndexNumber="1" Description="fvdfvdfvdfv" Performed="False"/>-->
                         </ListView>
+                        <TextBox x:Name="TaskTextBox" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="541" Height="20" Text="Создайте новую задачу..." />
+                        <Button x:Name="NewTackButton" Content="Создать" Margin="0,10,10,0" VerticalAlignment="Top" Click="AddTask_Click" HorizontalAlignment="Right" Width="90"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Выполненые">
@@ -81,6 +87,6 @@
                 </TabItem>
             </TabControl>
         </GroupBox>
-        
+
     </Grid>
 </Window>
