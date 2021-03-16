@@ -58,14 +58,15 @@ namespace ToDoListWpf
         {
             var selected = listProjects.SelectedItem;
 
-            if (selected is null)
+            if (!(selected is Project project))
             {
                 //добавить сообщение
                 return;
             }
 
-            listProjects.Items.Remove(selected);
-            projects.DeleteProject((Project)selected);
+            var collection = (ObservableCollection<Project>)listProjects.ItemsSource;
+            collection.Remove(project);
+            projects.DeleteProject(project);
         }
 
         private void AddTask_Click(object sender, RoutedEventArgs e)
