@@ -8,13 +8,12 @@
         Title="ToDoListWpf" Height="500" Width="900" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="102*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="174*"/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <GroupBox Header="Список проектов" Margin="0,0,0,40" Grid.Row="1">
@@ -32,7 +31,7 @@
         <Button x:Name="delProjects" Content="Удалить" HorizontalAlignment="Left" Margin="130,0,0,10" Width="60" Height="20" VerticalAlignment="Bottom" Grid.Row="1" Click="DelProjects_Click"/>
         <Button x:Name="addProjects" Content="Создать" HorizontalAlignment="Left" Margin="60,0,0,10" Width="60" Height="20" VerticalAlignment="Bottom" Grid.Row="1" Click="AddProjects_Click"/>
 
-        <Menu Grid.ColumnSpan="3" Background="White" Margin="0,0,0,461" Grid.RowSpan="2">
+        <Menu Grid.ColumnSpan="3" Background="White">
             <MenuItem Header="Файл">
                 <MenuItem Header="Открыть список проектов"></MenuItem>
                 <MenuItem Header="Сохранить"></MenuItem>
@@ -58,7 +57,7 @@
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn DisplayMemberBinding="{Binding Path=IndexNumber}">№</GridViewColumn>
-                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Description}" Width="570">Описание задачи</GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Description}" Width="560">Описание задачи</GridViewColumn>
                                     <GridViewColumn DisplayMemberBinding="{Binding Path=Performed}">Выполнено?</GridViewColumn>
                                 </GridView>
                             </ListView.View>
