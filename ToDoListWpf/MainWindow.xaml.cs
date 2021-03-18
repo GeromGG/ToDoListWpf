@@ -80,7 +80,7 @@ namespace ToDoListWpf
             }
 
             var project = (Project)selected;
-            project.AddTask(tasksView.Items.Count, TaskTextBox.Text);
+            project.AddTask(TaskTextBox.Text);
             tasksView.ItemsSource = new ObservableCollection<ProjectTask>(project.Tasks);
 
         }

@@ -30,9 +30,9 @@
         /// <param name="indexNumber">Порядковый номер, важность</param>
         /// <param name="description">Описание задачи</param>
         /// <param name="performed">Флаг выполнения</param>
-        public void AddTask(int indexNumber, string description, bool performed = false)
+        public void AddTask(string description)
         {
-            var projectTask = new ProjectTask(indexNumber, description, performed);
+            var projectTask = new ProjectTask(description);
             Tasks.Add(projectTask);
         }
 

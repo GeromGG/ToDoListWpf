@@ -8,9 +8,10 @@
 
         }
 
-        public ProjectTask(int indexNumber, string description, bool performed = false)
+        public ProjectTask( string description, bool performed = false)
         {
-            IndexNumber = indexNumber;
+            ++Index;
+            IndexNumber = Index;
             Description = description;
             Performed = performed;
         }
@@ -29,5 +30,7 @@
         /// флаг выполнения
         /// </summary>
         public bool Performed { get; set; }
+
+        private static int Index { get; set; }
     }
 }
