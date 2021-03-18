@@ -60,7 +60,7 @@ namespace ToDoListWpf
 
             if (!(selected is Project project))
             {
-                //добавить сообщение
+                MessageBox.Show("Проект не выбран", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -75,7 +75,7 @@ namespace ToDoListWpf
 
             if (selected is null)
             {
-                //добавить сообщение
+                MessageBox.Show("Проект не выбран", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -92,12 +92,13 @@ namespace ToDoListWpf
 
             if (!(selectedProjects is Project project))
             {
+                MessageBox.Show("Проект не выбран", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             if (!(selectedTasks is ProjectTask projectTask))
             {
-                //добавить сообщение
+                MessageBox.Show("Задача не выбрана", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -113,7 +114,6 @@ namespace ToDoListWpf
             if (selected is null)
             {
                 tasksView.ItemsSource = new ObservableCollection<ProjectTask>();
-                //добавить сообщение
                 return;
             }
 
