@@ -17,7 +17,7 @@
         </Grid.ColumnDefinitions>
 
         <GroupBox Header="Список проектов" Margin="0,0,0,40" Grid.Row="1">
-            <ListBox x:Name="listProjects" DisplayMemberPath="Name">
+            <ListBox x:Name="listProjects" DisplayMemberPath="Name" SelectionChanged="listProjects_SelectionChanged">
                 <ListBox.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Переименовать"></MenuItem>

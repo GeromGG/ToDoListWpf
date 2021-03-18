@@ -30,15 +30,15 @@ namespace ToDoListWpf
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            var selected = listProjects.SelectedItem;
-            var project = (Project)selected;
-            if (project != null)
-            {
-                foreach (var task in project.Tasks)
-                {
-                    tasksView.Items.Add(task);
-                }
-            }
+            //var selected = listProjects.SelectedItem;
+            //var project = (Project)selected;
+            //if (project != null)
+            //{
+            //    foreach (var task in project.Tasks)
+            //    {
+            //        tasksView.Items.Add(task);
+            //    }
+            //}
         }
 
         Projects projects = new();
@@ -88,6 +88,21 @@ namespace ToDoListWpf
         private void DelTask_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void listProjects_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selected = listProjects.SelectedItem;
+
+            if (selected is null)
+            {
+                tasksView.ItemsSource = new ObservableCollection<ProjectTask>();
+                //добавить сообщение
+                return;
+            }
+
+            var project = (Project)selected;
+            tasksView.ItemsSource = new ObservableCollection<ProjectTask>(project.Tasks);
         }
     }
 }
