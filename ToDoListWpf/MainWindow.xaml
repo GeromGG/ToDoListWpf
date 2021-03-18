@@ -57,8 +57,8 @@
                         <ListView IsEnabled="True" x:Name="tasksView" Margin="0,40,0,0" ItemsSource="{DynamicResource ResourceKey=projectTask}">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn DisplayMemberBinding="{Binding Path=IndexNumber}">№</GridViewColumn>
-                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Description}" Width="560">Описание задачи</GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=IndexNumber}" Width="30">№</GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Description}" Width="535">Описание задачи</GridViewColumn>
                                     <GridViewColumn DisplayMemberBinding="{Binding Path=Performed}">Выполнено?</GridViewColumn>
                                 </GridView>
                             </ListView.View>
