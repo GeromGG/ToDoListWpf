@@ -42,6 +42,7 @@
             <MenuItem Header="Правка" >
                 <MenuItem Header="Новый проект" Click="AddProjects_Click"></MenuItem>
                 <MenuItem Header="Новая задача"></MenuItem>
+                <MenuItem Header="удалить проект" Background="Red" Click="DelTask_Click"></MenuItem>
                 <MenuItem Header="Что-то ещё" ></MenuItem>
             </MenuItem>
             <MenuItem Header="Справка" >

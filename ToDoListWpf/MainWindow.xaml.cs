@@ -87,7 +87,23 @@ namespace ToDoListWpf
 
         private void DelTask_Click(object sender, RoutedEventArgs e)
         {
+            var selectedProjects = listProjects.SelectedItem;
+            var selectedTasks = tasksView.SelectedItem;
 
+            if (!(selectedProjects is Project project))
+            {
+                return;
+            }
+
+            if (!(selectedTasks is ProjectTask projectTask))
+            {
+                //добавить сообщение
+                return;
+            }
+
+            var collection = (ObservableCollection<ProjectTask>)tasksView.ItemsSource;
+            collection.Remove(projectTask);
+            project.DeleteTask(projectTask);
         }
 
         private void listProjects_SelectionChanged(object sender, SelectionChangedEventArgs e)
