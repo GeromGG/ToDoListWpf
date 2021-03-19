@@ -120,5 +120,27 @@ namespace ToDoListWpf
             var project = (Project)selected;
             tasksView.ItemsSource = new ObservableCollection<ProjectTask>(project.Tasks);
         }
+
+        //private void TaskTextBox_MouseDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    TaskTextBox.SelectionStart = 0;
+        //    TaskTextBox.SelectionLength = TaskTextBox.Text.Length;
+        //    TaskTextBox.Select(0, TaskTextBox.Text.Length);
+        //}
+
+        private bool isFocused = false;
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            isFocused = true;
+        }
+
+        private void TextBox_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if (isFocused)
+            {
+                isFocused = false;
+                (sender as TextBox).SelectAll();
+            }
+        }
     }
 }

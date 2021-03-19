@@ -42,7 +42,7 @@
             <MenuItem Header="Правка" >
                 <MenuItem Header="Новый проект" Click="AddProjects_Click"></MenuItem>
                 <MenuItem Header="Новая задача"></MenuItem>
-                <MenuItem Header="удалить проект" Background="Red" Click="DelTask_Click"></MenuItem>
+                <MenuItem Header="удалить проект" Click="DelTask_Click"></MenuItem>
                 <MenuItem Header="Что-то ещё" ></MenuItem>
             </MenuItem>
             <MenuItem Header="Справка" >
@@ -62,12 +62,16 @@
                                     <GridViewColumn DisplayMemberBinding="{Binding Path=Performed}">Выполнено?</GridViewColumn>
                                 </GridView>
                             </ListView.View>
-                            <!--<ListView.Resources>
-                                <col:ArrayList x:Key="projectTask"></col:ArrayList>
-                            </ListView.Resources>-->
-                            <!--<local:ProjectTask IndexNumber="1" Description="fvdfvdfvdfv" Performed="False"/>-->
                         </ListView>
-                        <TextBox x:Name="TaskTextBox" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="541" Height="20" Text="Создайте новую задачу..." />
+                        <TextBox x:Name="TaskTextBox" 
+                                 HorizontalAlignment="Left" 
+                                 Margin="10,10,0,0" 
+                                 TextWrapping="Wrap" 
+                                 VerticalAlignment="Top" 
+                                 Width="541" Height="20" 
+                                 Text="Создайте новую задачу..." 
+                                 GotFocus="TextBox_GotFocus"
+                                 SelectionChanged="TextBox_SelectionChanged"/>
                         <Button x:Name="NewTackButton" Content="Создать" Margin="0,10,10,0" VerticalAlignment="Top" Click="AddTask_Click" HorizontalAlignment="Right" Width="90"/>
                     </Grid>
                 </TabItem>
