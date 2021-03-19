@@ -57,9 +57,17 @@
                         <ListView IsEnabled="True" x:Name="tasksView" Margin="0,40,0,0" ItemsSource="{DynamicResource ResourceKey=projectTask}">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn DisplayMemberBinding="{Binding Path=IndexNumber}" Width="30">№</GridViewColumn>
-                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Description}" Width="535">Описание задачи</GridViewColumn>
-                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Performed}">Выполнено?</GridViewColumn>
+                                    <GridViewColumn Header="№"               Width="30"  DisplayMemberBinding="{Binding Path=IndexNumber}"></GridViewColumn>
+                                    <GridViewColumn Header="Описание задачи" Width="535" DisplayMemberBinding="{Binding Path=Description}"></GridViewColumn>
+                                    <GridViewColumn Header="Выполнено?">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel>
+                                                    <CheckBox IsChecked="{Binding Path=Performed}"></CheckBox>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
                                 </GridView>
                             </ListView.View>
                         </ListView>
