@@ -82,7 +82,8 @@ namespace ToDoListWpf
             var project = (Project)selected;
             project.AddTask(TaskTextBox.Text);
             tasksView.ItemsSource = new ObservableCollection<ProjectTask>(project.Tasks);
-
+            //tasksView.Background = Brushes.White;
+            //var s = tasksView.ItemsSource;
         }
 
         private void DelTask_Click(object sender, RoutedEventArgs e)
@@ -90,13 +91,13 @@ namespace ToDoListWpf
             var selectedProjects = listProjects.SelectedItem;
             var selectedTasks = tasksView.SelectedItem;
 
-            if (!(selectedProjects is Project project))
+            if (selectedProjects is not Project project)
             {
                 MessageBox.Show("Проект не выбран", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            if (!(selectedTasks is ProjectTask projectTask))
+            if (selectedTasks is not ProjectTask projectTask)
             {
                 MessageBox.Show("Задача не выбрана", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
